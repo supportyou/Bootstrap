@@ -421,6 +421,32 @@
 
 			 </div>
 
+			 <P></P>
+
+			 <a href="" title="hehe, very good!" data-toggle="tooltip" data-placement="right" data-delay="100" id="myToolTip">ToolTip</a>
+
+			 <p></p>
+
+			 <a href="#" title="This is a popover" data-toggle="popover" data-placement="top">PopOver</a>
+
+			 <p></p>
+
+			 <button class="btn btn-default btn-lg" data-toggle="popover" data-content="This is content" title="my Title" data-container="body">Click for PopOver</button>
+
+			 <div class="alert alert-warning" id="myClose">
+			 	<a class="close" data-dismiss="alert">&times;</a>
+			 	Close me!
+			 </div>
+
+			 <button class="btn btn-primary btn-lg" data-loading-text="Loading..." type="button" id="myLoading">Click me</button>
+			 <button class="btn btn-info btn-lg" data-toggle="button">Click</button>
+
+			 <div class="btn-group" data-toggle="buttons">
+			 	<lable class="btn btn-primary"><input type="checkbox">Q1</lable>
+			 	<lable class="btn btn-primary"><input type="checkbox">Q2</lable>
+			 	<lable class="btn btn-primary"><input type="checkbox">Q3</lable>
+			 </div>
+
 
 		</div>
 
@@ -431,6 +457,34 @@
 
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+
+		<script>
+		   $(function() { 
+		      $(".btn1").click(function(){
+		         $(this).button('loading').delay(1000).queue(function() {
+		           // $(this).button('reset');
+		         });        
+		      });
+		   });  
+		</script>
+
+		<script type="text/javascript">
+		$(function() { 
+			$("#myLoadingXX").click(function() {
+				$(this).button('loading').delay(1000).queue(function(){});
+			});
+		});
+		</script>
+
+		<script type="text/javascript">
+			$(function () { $("[data-toggle='popover']").popover(); });
+		</script>
+
+		<script>
+			$("#myClose").bind('close.bs.alert', function() {
+				alert("Are you sure?");
+			})
+		</script>
 
 		<script type="text/javascript">
 
@@ -476,6 +530,18 @@
 				$('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
 					alert($(e.target).text());
 					alert($(e.relatedTarget).text());
+				});
+			});
+		</script>
+
+		<script type="text/javascript">
+			$(function() {
+				$("[data-toggle='tooltip']").tooltip();
+			});
+
+			$(function() {
+				$('#myToolTip').on('hidden.bs.tooltip', function() {
+					alert("Why hide me?")
 				});
 			});
 		</script>

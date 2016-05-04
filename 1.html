@@ -1,0 +1,23 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">  
+<html>  
+<head>  
+    <title>父窗口</title>  
+    <meta name="generator" content="editplus">  
+    <meta name="author" content="">  
+    <meta name="keywords" content="">  
+    <meta name="description" content="">  
+</head>  
+<script type="text/javascript">  
+    function addwindow() {  
+        var href = "2.html";  
+        window.open(href, "newwindow", "height=200,width=400,toolbar=no,menubar=no,scrollbars=no,resizable=no, location=no,status=no");  
+    }  
+    function add(id, textvalue) {  
+        document.getElementById(id).value = textvalue;  
+    }  
+</script>  
+<body>  
+<input id="newId" type="text"><br>  
+<input type="button" value="addwindow" onclick="addwindow()">  
+</body>  
+</html> 

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">  
+<HTML>  
+<HEAD>  
+    <TITLE>子窗口</TITLE>  
+    <META NAME="Generator" CONTENT="EditPlus">  
+    <META NAME="Author" CONTENT="">  
+    <META NAME="Keywords" CONTENT="">  
+    <META NAME="Description" CONTENT="">  
+</HEAD>  
+  
+<script type="text/javascript">  
+    function test() {  
+        var textValue;  
+        for (var i = 0; i < document.getElementById("newId").length; i++) {  
+            if (document.getElementById("newId").options[i].selected) {  
+                textValue = document.getElementById("newId").options[i].text;  
+                break;  
+            }  
+        }  
+        window.opener.add("newId", textValue);  
+        self.close();  
+    }  
+</script>  
+  
+<BODY>  
+<form id="form1">  
+    <select id="newId">  
+        <option value="1">1</option>  
+        <option value="2">2</option>  
+        <option value="3">3</option>  
+    </select>  
+    <input type="button" value="submit" onclick="test()">  
+</form>  
+</BODY>  
+</HTML>  

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+<!-- 最新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap-theme.min.css">
+ </head>
+  <body>
+<div class="d_table" id="d_table">
+    	<table class="table table-hover table-striped table-bordered">
+        	<thead>
+            	<tr>
+                	<th>姓名</th>
+                    <th>性别</th>
+                    <th>手机号码</th>
+                    <th>邮箱</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+            <c:forEach items="${personList.datas}" var="person">
+            	<tr id="aa">
+                	<td>aa</td>
+                    <td>bb</td>
+                    <td>cc</td>
+                    <td>dd</td>
+                    <td><a href="javascript:void(0)" onclick="update(this);" >修改</a> | <a href="javascript:del('1')">删除</a></td>
+                </tr>
+              </c:forEach>
+            </tbody>
+        </table>
+    </div>
+<div class="modal fade" id="update" aria-hidden="true">
+	<div class="modal-dialog">
+	    <div class="modal-content">
+     	<form id="saveDeviceForm" action="saveDevice" method="post">
+            <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h3>修改</h3>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li><span>姓名:</span><input id="name" type="text" name="personName"/></li>
+                    <li><span>性别：</span>
+                        <input id="p_man" type="radio" name="personSex" value="男"/><label for="p_man">男</label>
+                        <input id="p_woman" type="radio" name="personSex" value="女"/><label for="p_woman">女</label>
+                    </li>
+                    <li><span>手机号码：</span><input id="phone" type="text" maxlength="11" name="personPhone"/><span class="errorMeg" id="errorPhone"></span></li>
+                    <li><span>邮箱：</span><input type="text" name="personMail" id="email" onblur="checkEmail()"/><span class="errorMeg" id="errorEmail"></span></li>
+                    <li><span>地址：</span><input type="text" name="personAddress" /></li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <a class="button" data-dismiss="modal" aria-hidden="true">取消</a>
+                <a class="button" onclick="submitOK()">确定</a>
+            </div>
+        </form>
+    </div>
+    </div>
+    </div>
+  </body>
+</html>
+
+<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+ 
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script>
+    function update(obj){
+        var tds=$(obj).parent().parent().find('td');
+        $('#name').val(tds.eq(0).text());
+        $('#phone').val(tds.eq(2).text());
+        $('#update').modal('show');
+    }
+</script>

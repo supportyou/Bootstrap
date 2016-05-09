@@ -1,0 +1,299 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
+<html>  
+ <head>  
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>  
+  <title>选择收件人</title>  
+  <script src="js/jquery.js"></script> 
+  <script src="friend.js" type="text/javascript"></script>  
+ </head>  
+  
+ <body>  
+    收件人:<input type="text" name="my-name" id="my-name" value="请选择收件人" onclick="pop()" />  
+           <input type="hidden" name="my-value" id="my-value" />  
+  
+    <!--alert layer-->  
+    <div id="choose-box-wrapper">  
+      <div id="choose-box">  
+        <div id="choose-box-title">  
+            <span>选择好友</span>  
+        </div>  
+        <div id="choose-a-class">  
+        </div>  
+        <div>  
+            <ul id="choose-a-item">  
+            </ul>  
+        </div>  
+        <div id="choose-box-bottom">  
+            <input type="button" onclick="doSelect()" value="确定" />    
+            <input type="button" onclick="hide()" value="关闭" />  
+        </div>  
+      </div>  
+    </div>  
+    <!--alert layer-->  
+    
+  <script type="text/javascript">  
+
+
+var itemList = [  
+{  
+    "id": 1,  
+    "items": [{  
+        "id": 1001,  
+        "name": "张三1"  
+    },  
+    {  
+        "id": 1002,  
+        "name": "李四1"  
+    },  
+    {  
+        "id": 1003,  
+        "name": "王五1"  
+    },  
+    {  
+        "id": 1004,  
+        "name": "赵六1"  
+    },  
+    {  
+        "id": 1005,  
+        "name": "赵七1"  
+    }],  
+    "name": "我的同学"  
+},  
+{  
+    "id": 2,  
+    "items": [{  
+        "id": 1001,  
+        "name": "张三2"  
+    },  
+    {  
+        "id": 1002,  
+        "name": "李四2"  
+    },  
+    {  
+        "id": 1003,  
+        "name": "王五2"  
+    },  
+    {  
+        "id": 1004,  
+        "name": "赵六2"  
+    },  
+    {  
+        "id": 1005,  
+        "name": "赵七2"  
+    }],  
+    "name": "我的同事"  
+}  
+]  
+
+
+
+
+
+
+
+
+
+
+
+  
+    //弹出窗口  
+    function pop(){  
+        //将窗口居中  
+        makeCenter();  
+        //初始化分类列表  
+        initLayerClass();  
+        //默认情况下, 给第一个分类添加choosen样式  
+        $('[class-id="1"]').addClass('choosen');  
+        //初始化ITEM列表  
+        initItemList(1);  
+    }  
+  
+    //隐藏窗口  
+    function hide() {  
+        $('#choose-box-wrapper').css("display", "none");  
+    }  
+  
+    //获取选择值  
+    function doSelect() {  
+        var list = $(".class-item-ck");  
+        var text = "";  
+        var value = "";  
+        list.each(function () {  
+            if ($(this).is(':checked')) {  
+                text += $(this).attr("item-name") + ";";  
+                value += $(this).attr("item-id");  
+            };  
+        });  
+        $('#my-name').val('').val(text);  
+        $('#my-value').val('').val(value);  
+        //关闭弹窗  
+        hide();  
+    };  
+  
+    function initLayerClass()  
+    {  
+        //原先的分类列表清空  
+        $('#choose-a-class').html('');  
+        for (i = 0; i < itemList.length; i++) {  
+            $('#choose-a-class').append('<a class="class-item" class-id="' + itemList[i].id + '">' + itemList[i].name + '</a>');  
+        }  
+        //添加分类列表项的click事件  
+        $('.class-item').bind('click', function () {  
+            var item = $(this);  
+            var classid = item.attr('class-id');  
+            var choosenItem = item.parent().find('.choosen');  
+            if (choosenItem) {  
+                $(choosenItem).removeClass('choosen');  
+            }  
+            item.addClass('choosen');  
+            //更新列表  
+            initItemList(classid);  
+        }  
+        );  
+    }  
+  
+    function initItemList(classid)  
+    {  
+        //原先列表清空  
+        $('#choose-a-item').html('');  
+        var mitems = itemList[classid - 1].items;  
+        for (i = 0; i < mitems.length; i++) {  
+            var html = '<li class="itemli">';  
+            html += '<a class="mdata-item" item-id="' + mitems[i].id + '">' + mitems[i].name + '</a>';  
+            html += '<input type="checkbox" class="class-item-ck" item-id="' + mitems[i].id + '" item-name="' + mitems[i].name + '" />';  
+            html += '</li>';  
+            $('#choose-a-item').append(html);  
+        }  
+        //添加详细列表项的click事件  
+        $('.mdata-item').bind('click', function(){  
+                var item=$(this);  
+                //更新选择文本框中的值  
+                $('#my-name').val(item.text());  
+                //关闭弹窗  
+                hide();  
+            }  
+        );  
+    }  
+  
+    function makeCenter()  
+    {  
+        $('#choose-box-wrapper').css("display","block");  
+        $('#choose-box-wrapper').css("position","absolute");  
+        $('#choose-box-wrapper').css("top", Math.max(0, (($(window).height() - $('#choose-box-wrapper').outerHeight()) / 2) + $(window).scrollTop()) + "px");  
+        $('#choose-box-wrapper').css("left", Math.max(0, (($(window).width() - $('#choose-box-wrapper').outerWidth()) / 2) + $(window).scrollLeft()) + "px");  
+    }  
+  
+  </script>  
+      
+  <style type="text/css">  
+    #choose-box-wrapper{  
+        width: 652px;  
+        background-color:#000;  
+        filter:alpha(opacity=50);  
+        background-color: rgba(0, 0, 0, 0.5);  
+        padding:10px;  
+        border-radius:5px;  
+        display:none;  
+    }  
+    #choose-box{  
+        border: 1px solid #005EAC;  
+        width:650px;  
+        background-color:white;  
+    }  
+    #choose-box-title{  
+        background:#3777BC;  
+        color: white;  
+        padding: 4px 10px 5px;  
+        font-size: 14px;  
+        font-weight: 700;  
+        margin: 0;  
+    }  
+    #choose-box-title span{  
+        font-family: Tahoma, Verdana, STHeiTi, simsun, sans-serif;  
+    }  
+  
+    #choose-a-class, #choose-a-item{  
+        margin:5px 8px 10px 8px;  
+        border: 1px solid #C3C3C3;  
+    }  
+    #choose-a-class a{  
+        display:inline-block;  
+        height: 18px;  
+        line-height: 18px;  
+        color:#005EAC;  
+        text-decoration: none;  
+        font-size: 9pt;  
+        font-family: Tahoma, Verdana, STHeiTi, simsun, sans-serif;  
+        margin:2px 5px;  
+        padding: 5px;  
+        text-align: center;  
+    }  
+    #choose-a-class a:hover{  
+        text-decoration: none;  
+        cursor:pointer;  
+    }  
+    #choose-a-class .choosen{  
+        background-color: #005EAC;  
+        color:white;  
+    }  
+      
+    #choose-a-item{  
+        overflow-x: hidden;  
+        overflow-y: auto;  
+        height: 200px;  
+    }  
+    #choose-a-item a{  
+        height: 18px;  
+        line-height: 18px;  
+        color:#005EAC;  
+        text-decoration: none;  
+        font-size: 9pt;  
+        font-family: Tahoma, Verdana, STHeiTi, simsun, sans-serif;  
+        float: left;  
+        padding:2px 5px 2px 5px;  
+        margin: 4px;  
+        padding-left:10px;  
+        background:url(2012072500060712.gif) no-repeat 0 9px;  
+    }  
+    #choose-a-item a:hover{  
+        background-color:#005EAC;  
+        color:white;  
+        cursor:pointer;  
+    }  
+    #choose-a-item .itemli{  
+        width:100px;   
+        list-style:none;   
+        float:left;  
+    }  
+    #choose-a-item .class-item-ck  
+    {  
+        margin-top:10px;  
+        display:inline;  
+    }  
+          
+    #choose-box-bottom{  
+        background: #F0F5F8;  
+        padding: 8px;  
+        text-align: right;  
+        border-top: 1px solid #CCC;  
+        height:40px;  
+    }  
+    #choose-box-bottom input{  
+        vertical-align: middle;  
+        text-align: center;  
+        background-color:#005EAC;  
+        color:white;  
+        border-top: 1px solid #B8D4E8;  
+        border-left: 1px solid #B8D4E8;  
+        border-right: 1px solid #114680;  
+        border-bottom: 1px solid #114680;  
+        cursor: pointer;  
+        width: 60px;  
+        height: 25px;  
+        margin-top: 6px;  
+        margin-right: 6px;  
+    }  
+  </style>  
+  
+ </body>  
+</html>  

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="css/bootstrap.min.css" rel="stylesheet"/>
+		<meta name="viewport" content="width=device-width, 
+                                     initial-scale=1.0, 
+                                     maximum-scale=1.0, 
+                                     user-scalable=no">
+	</head>
+	<body>
+
+		<div class="container">
+
+		   <div class="col-lg-6">
+		    <div class="input-group">
+		      <input type="text" class="form-control" aria-label="Text input with dropdown button">
+		      <div class="input-group-btn">
+		        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          Action
+		        </button>
+		        <div class="dropdown-menu dropdown-menu-right">
+		          <a class="dropdown-item" href="#">香蕉</a>
+		          <a class="dropdown-item" href="#">苹果</a>
+		          <a class="dropdown-item" href="#">土豆</a>
+		          <a class="dropdown-item" href="#">玉米</a>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+
+		</div>
+
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+
+<script>
+   $('.dropdown-item').click(function(event) {
+   var choice = $(this).text();
+   //console.log(choice);
+   $('input').val(choice);
+ }); 
+ </script>
+
+	</body>
+</html>

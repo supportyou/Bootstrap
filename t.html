@@ -1,0 +1,241 @@
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+<html> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<title>Subscribe策略</title> 
+<style type="text/css"> 
+* { margin: 0; padding: 0;}
+#bg{ 
+  display:none; 
+  position:fixed; 
+  _position:absolute; 
+  height:100%; 
+  width:100%; 
+  top:0; 
+  left:0; 
+  background:#000; 
+  border:1px solid #cecece; 
+  z-index:1; 
+}
+#logWin{ 
+  display: none; 
+  margin-top:300; 
+  padding:0; 
+  position:fixed; 
+  _position:absolute; 
+  z-index:2; 
+  width:230px; 
+  height:140px; 
+  border:1px solid #c8c8c8; 
+  background:#fff; 
+  overflow:auto; 
+}
+#logWin h2{ 
+  height:30px; 
+  background:#c8c8c8; 
+  text-align:center; 
+  line-height:30px; 
+  color:#fff; 
+}
+#logWin form{ 
+  margin:20px 10px 10px 10px; 
+}
+#logWin .dataArea{ 
+  margin-top:10px; 
+}
+#logWin .controlArea{ 
+  margin-top:13px; 
+  margin-left:35px; 
+}
+#logWin .controlArea input{ 
+  width:60px; 
+} 
+</style> 
+<script src="js/jquery.js" type="text/javascript"></script> 
+<script type="text/javascript"> 
+function findit(msg){ 
+  var logStatus = 0; 
+  if(msg==2) 
+  checkWin(logStatus); 
+} 
+function centerWin(){ 
+  //center the Win to the center of screen 
+  var windowWidth = document.documentElement.clientWidth, 
+    windowHeight = document.documentElement.clientHeight, 
+    scrollTop = document.documentElement.scrollTop, 
+    scrollLeft = document.documentElement.scrollLeft, 
+    popupWidth = $("#logWin").width(), 
+    popupHeight = $("#logWin").height(); 
+  $("#logWin").css({ 
+    "display" : "block", 
+    "position" : "absolute", 
+    "top" : scrollTop + windowHeight/2 - popupHeight/2, 
+    "left" : scrollLeft + windowWidth/2 - popupWidth/2 
+  }); 
+  //only need force for IE6 
+  $("#bg").css({"height" : windowHeight}); 
+} 
+function checkWin(logStatus01) { 
+  logStatus=logStatus01; 
+  if (logStatus == 0) { 
+    //if the window is disabled, enable the window 
+    centerWin(); 
+    $("#bg").css({"opacity":"0.5"}); 
+    $("#bg").fadeIn("fast"); 
+    logStatus = 1; 
+  } else { 
+    //disable the window 
+    $("#bg").fadeOut("fast"); 
+    $("#logWin").fadeOut("fast"); 
+    logStatus = 0; 
+  } 
+} 
+$(function() { 
+    $("#no1,#no2,#no3,#no4").click(function(){ 
+    var msg01=$(this).text(); 
+     $("#role").append("<option selected='selected'>"+msg01+"</option>");
+     $("#logWin").css({ 
+      "display" : "", 
+  });
+      });
+  });
+</script> 
+</head> 
+<body> 
+  <select name="role_select" style="width: 154px" id="role" class="login_input"
+   onchange="findit(this.options[this.options.selectedIndex].value)"> 
+  <option value="1">******</option> 
+  <option value="1">******</option> 
+  <option value="2">输入</option>
+</select>
+<div id="logWin"> 
+  <h2>点击你想输入的内容</h2> 
+  <ul style="margin-left=10px; list-style:none;"> 
+    <li id="no1">NO1</li> 
+    <li id="no2">NO2</li> 
+    <li id="no3">NO3</li> 
+    <li id="no4">NO4</li> 
+  </ul> 
+</div> 
+</body> 
+</html>

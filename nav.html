@@ -6,27 +6,116 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet"/>
 	</head>
 	<body>
-		
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<a href="#" class="navbar-brand" style="padding:0;"><img src="img/logo.png" alt="瓢城企训网"></a>
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
+	
+	<section id="header">	
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a href="#" class="navbar-brand" style="padding:0;"><img src="img/logo.png" alt="瓢城企训网"></a>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="navbar-collapse">
+					<ul class="nav navbar-nav navbar-right" style="margin-top:0">
+						<li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-list"></span> 资讯</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-fire"></span> 案例</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> 关于</a></li>
+					</ul>	
+				</div>
 			</div>
-			<div class="collapse navbar-collapse" id="navbar-collapse">
-				<ul class="nav navbar-nav navbar-right" style="margin-top:0">
-					<li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-list"></span> 资讯</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-fire"></span> 案例</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> 关于</a></li>
-				</ul>	
+		</nav>
+	</section>
+	
+	<section id="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<ol class="breadcrumb">
+						<li><a href="">首页</a></li>
+						<li><a href="">所有学生</a></li>
+					</ol>
+				</div>	
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<form action="" class="form-inline" role="form">
+						<div class="form-group pull-right">
+							<button class="btn btn-info">新增</button>
+							<input class="form-control" type="text" name="search" placeholder="Search">
+							<button type="submit" class="btn btn-danger">提交</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="row">&nbsp;</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<table class="table table-responsive table-striped table-hover">
+						<caption>所有学生列表</caption>
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Age</th>
+								<th>Sex</th>
+								<th>Edit</th>
+								<th>Delete</th>
+							</th>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Rock</td>
+								<td>18</td>
+								<td>Male</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>Jack</td>
+								<td>23</td>
+								<td>Male</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>Angel</td>
+								<td>19</td>
+								<td>Female</td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-12" style="text-align: center;">
+					<ul class="pagination pagination-lg">
+						<li><a href="">&laquo;</a></li>
+						<li class="active"><a href="">1</a></li>
+						<li><a href="">2</a></li>
+						<li><a href="">3</a></li>
+						<li><a href="">4</a></li>
+						<li><a href="">&raquo;</a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
-	</nav>
+	</section>
+
+	<section id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">&copy; 2016 All Rights Reserved.</div>
+			</div>
+		</div>
+	</section>
 
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>

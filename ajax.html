@@ -63,12 +63,16 @@
 					"上海"
 				];
 
-				$("#MyPOL").autocomplete({
-					source: myList,
-					minLength: 0
-				}).focus(function(){
-					$(this).autocomplete('search','');
+				$("#MyPOL").focus().autocomplete({
+					source: myList
 				});
+
+				//$("#MyPOL").autocomplete({
+					//source: myList,
+					//minLength: 0
+				//}).focus(function(){
+					//$(this).autocomplete('search','');
+				//});
 
 
 			});

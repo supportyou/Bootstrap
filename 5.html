@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="css/bootstrap.min.css" rel="stylesheet"/>
+		<link rel="stylesheet" type="text/css" href="http://www.solutiisoft.com/bootstrap-sidebar/public/css/font-awesome.min.css">
+			<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-44073820-8', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+		<style type="text/css">
+/*
+ *-----------------------------------------------------------------------------------
+ * === CSS DESIGN ===
+ *-----------------------------------------------------------------------------------
+ * author SOLUTII SOFT
+ */
+ 
+/* === HTML ELEMENTS === */
+	* { 
+		outline: none !important; 
+		border-radius: 0 !important;
+	}
+
+	body {
+		background: #F5F5F5;
+		background-image: url('../img/bg.png');
+		color: #222;
+		font-family: 'Dosis', arial;
+		line-height: 1;
+		padding-top: 50px;
+		padding-bottom: 40px;
+		text-rendering: optimizelegibility;
+		
+		height: auto;
+		min-height: 100%;
+		width: 100%;		
+	}
+
+	a:link,	
+    a:focus, 
+    a:visited , 
+    a:active,
+    a:hover { 
+		text-decoration: none; 
+	}
+
+	h1, 
+    h2, 
+    h3, 
+    h4 {
+		font-family: 'Dosis', arial;
+	}
+	small {
+        color: #000000 !important;
+    }
+    
+	label {
+		font-size: 16px;
+		font-weight: 400;
+	}	
+    
+    ul  {   
+        list-style: none;
+    }
+	
+	p  {
+        font-size: 16px;
+    }
+
+	textarea {
+        resize: none;
+    }
+
+	i {
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+	
+	hr {
+		border-color: #999999;
+	}   
+        
+	main {
+		unicode-bidi: isolate; 
+		display: block; 
+		margin-bottom: 20px;    
+	}
+/* === END HTML ELEMENTS === */
+
+
+
+
+/* === NAVBAR === */
+	.navbar-default {
+		background-color: #444;
+		border-bottom: 0;
+		text-shadow: none;
+	}
+	.navbar-default ul.nav li.dropdown:hover > ul.dropdown-menu {
+		display: block;
+	}
+	.navbar-default .brand {
+		float: left;
+		width: 285px;
+	}
+	.navbar-default .navbar-brand span {
+		background: #CC0000;
+		color: #FFF;
+		padding: 6px 10px;
+		margin-left: -4px;
+	}
+	.navbar-default i {
+		color: #FFFFFF;
+	}
+	.navbar-default .toogle {
+		cursor: pointer;
+		font-size: 16px;
+		height: 50px;
+		line-height: 20px;
+		padding: 15px;
+	}	
+/* === END NAVBAR === */
+	
+	
+/* === SIDEBAR === */
+	.body {
+		position: relative;
+		margin: 0;
+		padding: 0;
+		transition: margin-left 0.5s;
+		-o-transition: margin-left 0.5s;
+		-moz-transition: margin-left 0.5s;
+		-webkit-transition: margin-left 0.5s;
+	}
+	.body.slide {
+		margin-left: 300px;
+	}
+	.sidebar {
+		background-color: #6595BC;
+		width: 300px;
+		height: 100%;
+		padding: 0px; 
+		position: fixed;
+		left: -300px;
+		right: auto;
+		top: 50px;
+		z-index: 1;
+		transition: left 0.5s;
+		-o-transition: left 0.5s;
+		-moz-transition: left 0.5s;
+		-webkit-transition: left 0.5s;
+		overflow-y: hidden;
+	}
+	.sidebar.show {
+		left: 0;
+		display: block;
+	}
+	.ps-scrollbar-y-rail {
+	  margin: 5px 0;
+	}	
+/* === END SIDEBAR === */
+
+
+/* === SIDEBAR MENU === */
+	.panel {
+		border: 0;
+		box-shadow: none;
+	}
+	
+	.panel-default > .panel-heading {
+		background-color: #6595BC;
+	}
+	.panel-default > .panel-heading:hover {
+		background-color: #5B86A9;
+	}
+	.panel-default > .panel-heading  a {
+		color: #FFF;
+		display: block;
+		padding: 8px 0px;
+	}
+	
+	.list-group-item {
+		padding-left: 25px;
+		border: 0;
+		background: #286090;
+	}
+	.list-group-item:hover {
+		background: #365167;
+        padding-left: 15px;
+		transition-delay: 0s;
+        transition-duration: 0.3s;
+        transition-property: all;
+        transition-timing-function: linear;	
+	}
+	a.list-group-item {
+		color: #FFF;
+	}
+	a.list-group-item:hover {
+		background: #5881A2;
+		color: #FFF;
+	}	
+	
+	.solso-active {
+		background: #385269 !important;
+	}
+	
+	.list-group-item.no-border {
+		border: 0;
+	}	
+	
+	.panel-group .panel + .panel {
+		margin-top: 0px;
+	}	
+/* === END SIDEBAR MENU === */
+
+
+
+/* === SOLUTII SOFT === */
+	/* === HELPER CLASSES === */
+		.top10 			{margin-top: 10px;}
+		.top20 			{margin-top: 20px !important;}
+		.top40 			{margin-top: 40px;}
+		.bottom20		{margin-bottom: 20px;}
+		.bottom40		{margin-bottom: 40px;}
+		.noMargin 		{margin: 0;}
+		.noPadding 		{padding: 0;}	
+		.bg-white 		{background: #FFFFFF !important;}
+		.table .small	{width: 100px;}
+		.table .xs-small {width: 50px;}		
+		.uppercase 		{text-transform: uppercase;}
+		.lowercase 		{text-transform: lowercase;}
+		.capitalize 		{text-transform: capitalize;}
+	/* === END HELPER CLASSES === */
+	
+	/* === BUTTONS === */
+	.solso-pdf {
+		background: #8e44ad;
+		color: #ffffff;
+		border-color: #8e44ad;
+	}
+	.solso-pdf:hover, 
+	.solso-pdf:focus, 
+	.solso-pdf.active {
+		background: #9b59b6;
+		color: #ffffff;
+		border-color: #9b59b6;
+	}
+	
+	.solso-email {
+		background: #2c3e50;
+		color: #ffffff;
+		border-color: #2c3e50;
+	}
+	.solso-email:hover, 
+	.solso-email:focus, 
+	.solso-email.active {
+		background: #34495e;
+		color: #ffffff;
+		border-color: #34495e;
+		box-shadow: inset 0 3px 5px #0d253c;
+	}	
+	/* === END BUTTONS === */	
+	
+	/* === WIDGETS === */
+	.widget {
+		margin-bottom: 20px;
+		overflow: hidden;
+		padding: 15px;
+	}
+	.widget.widget-stats {
+		position: relative;
+	}
+	.widget-stats .stats-info h4 {
+		color: #fff;
+		font-size: 12px;
+		margin: 5px 0;
+	}
+	.widget-stats .stats-icon {
+		color: #fff;
+		font-size: 42px;
+		height: 56px;
+		line-height: 56px;
+		margin-left: 15px;
+		opacity: 0.2;
+		position: absolute;
+		right: 15px;
+		text-align: center;
+		top: 15px;
+		width: 56px;
+	}
+	.widget-stats .stats-info p {
+		font-size: 24px;
+		font-weight: 300;
+		margin-bottom: 0;
+	}
+	.widget hr {
+		border-top: 1px solid #FFFFFF;
+	}
+	.widget-stats .stats-link a {
+		background: none repeat scroll 0 0 rgba(0, 0, 0, 0.4);
+		color: #ddd;
+		display: block;
+		font-weight: 300;
+		margin: 15px -15px -15px;
+		padding: 7px 15px;
+		text-align: right;
+		text-decoration: none;
+	}
+	.widget-stats .stats-link a:focus, .widget-stats .stats-link a:hover {
+		background: none repeat scroll 0 0 rgba(0, 0, 0, 0.6);
+		color: #fff;
+	}
+	.widget-stats .stats-icon.stats-icon-lg {
+		font-size: 52px;
+		right: 21px;
+		top: 12px;
+	}
+	.widget-stats .stats-title {
+		font-size: 16px;
+		line-height: 1.1;
+		margin: 2px 0 7px;
+		position: relative;
+		text-transform: uppercase;
+	}
+	.widget-stats .stats-desc, .widget-stats .stats-title {
+		color: rgba(255, 255, 255, 0.6);
+	}
+	.widget-stats .stats-desc {
+		font-weight: 300;
+		margin-bottom: 0;
+	}
+	.widget-stats .stats-number {
+		color: #FFFFFF;
+		font-size: 24px;
+		font-weight: 300;
+		margin-bottom: 10px;
+	}
+	.widget-stats .stats-progress {
+		background: none repeat scroll 0 0 #FFFFFF;
+		height: 2px;
+		margin: 0 -15px 12px;
+	}
+	.widget-stats .stats-progress .progress-bar {
+		background: none repeat scroll 0 0 #FFFFFF;
+	}
+	.small-widget {
+		background: none repeat scroll 0 0 #FFFFFF;
+	}
+	
+	.bg-green 					{background: none repeat scroll 0 0 #2ABB9B;}	
+	.bg-blue 					{background: none repeat scroll 0 0 #4183D7;}	
+	.bg-purple 					{background: none repeat scroll 0 0 #8E44AD;}
+	.bg-grey 					{background: none repeat scroll 0 0 #2C3E50;}	
+	/* === END WIDGETS === */
+
+	.breadcrumb {
+		border: 1px solid #DDD;
+	}
+/* === END SOLUTII SOFT === */
+
+		</style>
+		<meta name="viewport" content="width=device-width, 
+                                     initial-scale=1.0, 
+                                     maximum-scale=1.0, 
+                                     user-scalable=no">
+	</head>
+	<body>
+
+<header>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="container-fluid">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+
+		<div class="brand">
+			<a class="navbar-brand" href="index.php"><span>bootstrap sidebar</span></a>
+			<a class="toogle pull-right"><i class="fa fa-chevron-left"></i></a>
+		</div>		
+	</div>
+
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<form class="navbar-form navbar-left" role="search">
+			<div class="form-group">
+				<select class="form-control solsoThemeEvent">
+					<option value="" selected>choose</option>
+					<option value="blue">blue theme</option>
+					<option value="orange">orange theme</option>
+				</select>
+			</div>
+		</form>	
+	</div>
+</div>
+</nav></header>
+
+<div class="body slide">
+	<aside class="sidebar show perfectScrollbar">
+		<div id="solso-sidebar">
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		<div class="panel panel-default">
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="heading1">
+					<h4 class="panel-title">
+						<a href="index.php" class="single-item">
+							<i class="fa fa-dashboard"></i> Dashboard 
+						</a>
+					</h4>
+				</div>
+			</div>
+		</div>
+		
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="heading2">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2">
+						<i class="fa fa-bar-chart-o"></i> Charts
+						<i class="pull-right fa fa-caret-down"></i>
+					</a>
+				</h4>
+			</div>
+			
+			<div id="collapse2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading2">
+				<div>
+					<a href="bar-chart.php" class="list-group-item">bar Chart</a>
+					<a href="pie-chart.php" class="list-group-item">pie Chart</a>
+					<a href="google-chart.php" class="list-group-item">google Chart</a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="heading3">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapse3">
+						<i class="fa fa-table"></i> Tables
+						<i class="pull-right fa fa-caret-down"></i>
+					</a>
+				</h4>
+			</div>
+			
+			<div id="collapse3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading3">
+				<div>
+					<a href="simple-tables.php" class="list-group-item">Simple Tables</a>
+					<a href="data-tables.php" class="list-group-item">Data Tables</a>
+					<a href="beauty-tables.php" class="list-group-item">Beauty Tables</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="heading4">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="true" aria-controls="collapse4">
+						<i class="fa fa-edit"></i> Forms
+						<i class="pull-right fa fa-caret-down"></i>
+					</a>
+				</h4>
+			</div>
+			
+			<div id="collapse4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading4">
+				<div>
+					<a href="form-1.php" class="list-group-item">Form 1</a>
+					<a href="form-2.php" class="list-group-item">Form 2</a>
+					<a href="form-3.php" class="list-group-item">Form 3</a>
+					<a href="form-4.php" class="list-group-item">Form 4</a>
+					<a href="form-5.php" class="list-group-item">Form 5</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="heading5">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="true" aria-controls="collapse5">
+						<i class="fa fa-desktop"></i> UI Elements
+						<i class="pull-right fa fa-caret-down"></i>
+					</a>
+				</h4>
+			</div>
+			
+			<div id="collapse5" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading5">
+				<div>
+					<a href="element-1.php" class="list-group-item">Element 1</a>
+					<a href="element-2.php" class="list-group-item">Element 2</a>
+					<a href="element-3.php" class="list-group-item">Element 3</a>
+					<a href="element-4.php" class="list-group-item">Element 4</a>
+					<a href="element-5.php" class="list-group-item">Element 5</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="heading6">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="true" aria-controls="collapse6">
+						<i class="fa fa-file"></i> Pages
+						<i class="pull-right fa fa-caret-down"></i>
+					</a>
+				</h4>
+			</div>
+			
+			<div id="collapse6" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading6">
+				<div>
+					<a href="page-1.php" class="list-group-item">Page 1</a>
+					<a href="page-2.php" class="list-group-item">Page 2</a>
+					<a href="page-3.php" class="list-group-item">Page 3</a>
+					<a href="page-4.php" class="list-group-item">Page 4</a>
+					<a href="page-5.php" class="list-group-item">Page 5</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading" role="tab" id="heading7">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="true" aria-controls="collapse7">
+						<i class="fa fa-picture-o"></i> Gallery
+						<i class="pull-right fa fa-caret-down"></i>
+					</a>
+				</h4>
+			</div>
+			
+			<div id="collapse7" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading7">
+				<div>
+					<a href="gallery-1.php" class="list-group-item">Gallery 1</a>
+					<a href="gallery-2.php" class="list-group-item">Gallery 2</a>
+					<a href="gallery-3.php" class="list-group-item">Gallery 3</a>
+					<a href="gallery-4.php" class="list-group-item">Gallery 4</a>
+					<a href="gallery-5.php" class="list-group-item">Gallery 5</a>
+				</div>
+			</div>
+		</div>		
+	</div>
+</div>	</aside>
+
+	
+	<div class="container-fluid left-border">
+	<div class="row">
+		<div class="col-md-12 col-lg-12 bottom40">
+			<h1>
+				<i class="fa fa-users"></i> Form 2
+			</h1>
+		</div>		
+	</div>	
+	</div>	
+</div>	
+
+
+
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+
+	</body>
+</html>
